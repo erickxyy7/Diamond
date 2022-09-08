@@ -112,8 +112,45 @@ void interpreter(char **tokens, size_t tokens_length) {
       free(result);
     }
     
+    else if (!strcmp(tokens[i], "if")) {
+      char **expression = NULL;
+      
+      size_t j = 0;
+      while (strcmp(tokens[++i], ";")) {
+        expression = realloc(expression, sizeof expression * j + 1);
+        expression[j] = malloc(sizeof expression[j] * strlen(tokens[i]) + 1);
+        strcpy(expression[j++], tokens[i]);
+      }
+      
+      char *result = postfix_evaluator(expression, j);
+      
+      if (atof(result) == 0) {
+        int gauge = 0;
+        while (true) {
+          
+          if (!strcmp(tokens[i], "if"))
+            ++gauge;
+          else if (!strcmp(tokens[i], "end")) {
+            if (gauge == 0) {
+              ++i;
+              break;
+            }
+            --gauge;
+          }
+          
+          ++i;
+        }
+      }
+      
+      for(size_t i = 0; i < j; ++i)
+        free(expression[i]);
+      free(expression);
+      free(result);
+    }
+    
     else if (!strcmp(tokens[i], "end")) {
       
+      /* Finds the keyword this `end` is for. */
       int gauge = 0;
       int j = i - 1;
       
@@ -121,6 +158,16 @@ void interpreter(char **tokens, size_t tokens_length) {
         
         if (!strcmp(tokens[j], "end"))
           ++gauge;
+        
+        else if (!strcmp(tokens[j], "if")) {
+          if (gauge == 0) {
+            ++i;
+            break;
+          }
+          
+          --gauge;
+        }
+        
         else if (!strcmp(tokens[j], "while")) {
           if (gauge == 0) {
             i = --j;
