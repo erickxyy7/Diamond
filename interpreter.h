@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #include "postfix.h"
 #include "lang_obj.h"
 
@@ -71,6 +72,43 @@ void interpreter(char **tokens, size_t tokens_length) {
       
       puts(result);
       
+      free(result);
+    }
+    
+    else if (!strcmp(tokens[i], "while")) {
+      
+      char **expression = NULL;
+      
+      size_t j = 0;
+      while (strcmp(tokens[++i], ";")) {
+        expression = realloc(expression, sizeof expression * j + 1);
+        expression[j] = malloc(sizeof expression[j] * strlen(tokens[i]) + 1);
+        strcpy(expression[j++], tokens[i]);
+      }
+      
+      char *result = postfix_evaluator(expression, j);
+      
+      if (atof(result) == 0) {
+        int gauge = 0;
+        while (true) {
+          
+          if (!strcmp(tokens[i], "while") || !strcmp(tokens[i], "if"))
+            ++gauge;
+          else if (!strcmp(tokens[i], "end")) {
+            if (gauge == 0) {
+              ++i;
+              break;
+            }
+            --gauge;
+          }
+          
+          ++i;
+        }
+      }
+      
+      for(size_t i = 0; i < j; ++i)
+        free(expression[i]);
+      free(expression);
       free(result);
     }
   }
