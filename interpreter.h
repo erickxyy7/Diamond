@@ -32,8 +32,15 @@ void interpreter(char **tokens, size_t tokens_length) {
       
       char *result = postfix_evaluator(expression, j);
       
-      Lang_obj *lang_obj = create_Lang_obj(tokens[name], result);
-      push__Data(data, lang_obj);
+      Lang_obj *lang_obj = name_exists(data, tokens[name]);
+      
+      if (!lang_obj) {
+        lang_obj = create_Lang_obj(tokens[name], result);
+        push__Data(data, lang_obj);
+      } else {
+        lang_obj->value = realloc(lang_obj->value, sizeof (char) * strlen(result) + 1);
+        strcpy(lang_obj->value, result);
+      }
       
       free(result);
       
@@ -49,7 +56,6 @@ void interpreter(char **tokens, size_t tokens_length) {
     printf("%s: %s\n", lang_obj->name, lang_obj->value);
     lang_obj = pop__Data(data);
   }
-  
 }
 
 #endif /* interpreter.h */

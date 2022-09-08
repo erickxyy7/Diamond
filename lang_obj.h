@@ -41,4 +41,17 @@ Lang_obj *create_Lang_obj(char *name, char *value) {
   return lang_obj;
 }
 
+/* Test if a name exists in `data` stack. */
+Lang_obj *name_exists(Data *data, char *name) {
+  Lang_obj *lang_obj = data->top;
+  while (lang_obj) {
+    
+    if (!strcmp(lang_obj->name, name))
+      return lang_obj;
+    
+    lang_obj = lang_obj->previous_lang_obj;
+  }
+  return NULL;
+}
+
 #endif /* lang_obj.h */
