@@ -9,6 +9,9 @@
 
 void interpreter(char **tokens, size_t tokens_length) {
   
+  Data *data = malloc(sizeof *data);
+  data->top = NULL;
+  
   for(size_t i = 0; i < tokens_length; ++i) {
     
     if (!strcmp(tokens[i], "=")) {
