@@ -1,0 +1,8 @@
+`
+variable = expression
+`
+
+E.g:
+```
+x = pi * 7
+```

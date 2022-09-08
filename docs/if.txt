@@ -1,0 +1,24 @@
+`
+if expression
+  ...
+end
+`
+
+E.g:
+```
+can_drink = true
+if user_age < 18
+  can_drink = false
+end
+```
+
+Inline:
+`
+if expression then ... end
+`
+
+E.g:
+```
+can_drink = true
+if user_age < 18 then can_drink = false; end
+```

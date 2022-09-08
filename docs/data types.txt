@@ -1,0 +1,14 @@
+The tokens, here, are representated inside '' or "".
+
+The primitive data types are:
+  number:
+    An integer or floating point number. A number can be positive or negative.
+    Examples:
+      '9'
+      '3.14'
+      '7.0'
+  string:
+    An immutable sequence of characters.
+    Examples:
+      '\'hello world!\''
+      "'yes'"
