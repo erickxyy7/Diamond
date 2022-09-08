@@ -12,6 +12,10 @@ typedef struct Data {
   Lang_obj *top;
 } Data;
 
+void initialize__Data(Data *data) {
+  data->top = NULL;
+}
+
 void push__Data(Data *data, Lang_obj *obj) {
   obj->previous_lang_obj = data->top;
   data->top = obj;
