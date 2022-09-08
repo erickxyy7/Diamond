@@ -16,6 +16,8 @@ void interpreter(char **tokens, size_t tokens_length) {
     
     if (!strcmp(tokens[i], "=")) {
       
+      size_t name = i - 1;
+      
       char **expression = NULL; // <- free it.
       
       size_t j = 0;
@@ -29,13 +31,23 @@ void interpreter(char **tokens, size_t tokens_length) {
       }
       
       char *result = postfix_evaluator(expression, j);
-      puts(result);
+      
+      Lang_obj *lang_obj = create_Lang_obj(tokens[name], result);
+      push__Data(data, lang_obj);
+      
       free(result);
       
       for(size_t i = 0; i < j; ++i)
         free(expression[i]);
       free(expression);
     }
+  }
+  
+  /* Prints all program variables. */
+  Lang_obj *lang_obj = pop__Data(data);
+  while (lang_obj != NULL) {
+    printf("%s: %s\n", lang_obj->name, lang_obj->value);
+    lang_obj = pop__Data(data);
   }
   
 }
