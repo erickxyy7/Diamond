@@ -18,7 +18,7 @@ void interpreter(char **tokens, size_t tokens_length) {
       
       size_t name = i - 1;
       
-      char **expression = NULL; // <- free it.
+      char **expression = NULL;
       
       size_t j = 0;
       while (strcmp(tokens[++i], ";")) {
@@ -47,6 +47,31 @@ void interpreter(char **tokens, size_t tokens_length) {
       for(size_t i = 0; i < j; ++i)
         free(expression[i]);
       free(expression);
+    }
+    
+    else if (!strcmp(tokens[i], "puts")) {
+      
+      char **expression = NULL;
+      
+      size_t j = 0;
+      while (strcmp(tokens[++i], ";")) {
+        
+        expression = realloc(expression, sizeof expression * j + 1);
+        expression[j] = malloc(sizeof expression[j] * strlen(tokens[i]) + 1);
+        
+        strcpy(expression[j++], tokens[i]);
+        
+      }
+      
+      char *result = postfix_evaluator(expression, j);
+      
+      for(size_t i = 0; i < j; ++i)
+        free(expression[i]);
+      free(expression);
+      
+      puts(result);
+      
+      free(result);
     }
   }
   
