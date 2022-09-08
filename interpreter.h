@@ -92,7 +92,7 @@ void interpreter(char **tokens, size_t tokens_length) {
         int gauge = 0;
         while (true) {
           
-          if (!strcmp(tokens[i], "while") || !strcmp(tokens[i], "if"))
+          if (!strcmp(tokens[i], "while"))
             ++gauge;
           else if (!strcmp(tokens[i], "end")) {
             if (gauge == 0) {
@@ -110,6 +110,29 @@ void interpreter(char **tokens, size_t tokens_length) {
         free(expression[i]);
       free(expression);
       free(result);
+    }
+    
+    else if (!strcmp(tokens[i], "end")) {
+      
+      int gauge = 0;
+      int j = i - 1;
+      
+      while (true) {
+        
+        if (!strcmp(tokens[j], "end"))
+          ++gauge;
+        else if (!strcmp(tokens[j], "while")) {
+          if (gauge == 0) {
+            i = --j;
+            break;
+          }
+          
+          --gauge;
+        }
+        
+        --j;
+      }
+      
     }
   }
   
