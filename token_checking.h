@@ -24,4 +24,18 @@ bool is_number(char *token) {
   return true;
 }
 
+/**
+ * Returns true if `token` is of type string, else, returns false.
+ * 
+ * Todo: throw error if the string is invalid. E.g: has an invalid escape character.
+ */
+bool is_string(char *token) {
+  size_t token_length = strlen(token);
+  if (token[0] == '\'' && token[token_length - 1] == '\'')
+    return true;
+  if (token[0] == '"' && token[token_length - 1] == '"')
+    return true;
+  return false;
+}
+
 #endif /* token_checking.h */
