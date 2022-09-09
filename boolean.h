@@ -2,6 +2,7 @@
 #define BOOLEAN_H 1
 
 #include <stdbool.h>
+#include "token_checking.h"
 
 /* Tests if a token is true or not.
  * 
