@@ -89,7 +89,7 @@ void interpreter(char **tokens, size_t tokens_length) {
       
       char *result = postfix_evaluator(expression, j);
       
-      if (atof(result) == 0) {
+      if (!is_true(result)) {
         int gauge = 0;
         while (true) {
           
