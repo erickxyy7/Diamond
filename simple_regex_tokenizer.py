@@ -12,25 +12,35 @@ def tokenizer(program):
   tokens = []
   for matchNum, match in enumerate(matches, start=1):
       tokens.append(match.group())
-  
+
   i = 0
-  l = len(tokens)
-  while i < l:
+  while i < len(tokens):
     if tokens[i] == '\n':
+      tokens[i] = ';'
+    i += 1
+
+  i = 0
+  while i < len(tokens):
+    if tokens[i] == 'then':
       tokens[i] = ';'
     i += 1
 
   if tokens[-1] != ';':
     tokens.append(';')
 
-  i = 0
-  l = len(tokens)
-  while i < l:
-    if tokens[i] == 'then':
-      tokens[i] = ';'
-    i += 1
-
   return tokens
 
 if __name__ == '__main__':
-  print(tokenizer('foo = 4 4 =='))
+
+  import sys
+
+  if len(sys.argv) == 1:
+    print('Usage: python3 %s program_name.lang' % (sys.argv[0]))
+    exit()
+
+  with open(sys.argv[1], 'r') as program_file:
+    program = program_file.read()
+
+  tokens = tokenizer(program)
+
+  print(tokens)
