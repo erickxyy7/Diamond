@@ -32,7 +32,7 @@ char *postfix_evaluator(Data *data, char **expression, size_t expression_length)
         else if (!strcmp(expression[i], "/"))
           numeric_result = atof(first_operand->value) / atof(second_operand->value);
         else if (!strcmp(expression[i], "=="))
-          numeric_result = 1;
+          numeric_result = atof(first_operand->value) == atof(second_operand->value);
         
         char *result = malloc(sizeof *result * total_digits(numeric_result) + 8);
         sprintf(result, "%.6lf", numeric_result);
