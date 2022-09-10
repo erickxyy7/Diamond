@@ -57,23 +57,32 @@ char *postfix_evaluator(Data *data, char **expression, size_t expression_length)
         
         free(result);
       } else if (is_string(first_operand->value) && is_string(second_operand->value)) {
-        
-        /**
-         * Concatenates one string into another.
-         */
-        
-        size_t result_length = sizeof(char) * strlen(first_operand->value) + strlen(second_operand->value) - 1;
-        char *result = malloc(result_length);
-        
-        size_t i, j;
-        for(i = 0; i < strlen(first_operand->value) - 1; ++i)
-          result[i] = first_operand->value[i];
-        for(j = 1; j < strlen(second_operand->value); ++j)
-          result[i++] = second_operand->value[j];
-        
-        push__Operands(operands, result);
-        
-        free(result);
+        if (!strcmp(expression[i], "+")) {
+          /**
+           * Concatenates one string into another.
+           */
+          
+          size_t result_length = sizeof(char) * strlen(first_operand->value) + strlen(second_operand->value) - 1;
+          char *result = malloc(result_length);
+          
+          size_t i, j;
+          for(i = 0; i < strlen(first_operand->value) - 1; ++i)
+            result[i] = first_operand->value[i];
+          for(j = 1; j < strlen(second_operand->value); ++j)
+            result[i++] = second_operand->value[j];
+          
+          push__Operands(operands, result);
+          
+          free(result);
+        } else if (!strcmp(expression[i], "==")) {
+          /**
+           * Tests if one string is equal to another.
+           */
+          if (!strcmp(first_operand->value, second_operand->value))
+            push__Operands(operands, "1");
+          else
+            push__Operands(operands, "0");
+        }
       }
       
       free(first_operand->value);
