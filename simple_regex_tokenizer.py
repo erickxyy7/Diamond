@@ -23,6 +23,13 @@ def tokenizer(program):
   if tokens[-1] != ';':
     tokens.append(';')
 
+  i = 0
+  l = len(tokens)
+  while i < l:
+    if tokens[i] == 'then':
+      tokens[i] = ';'
+    i += 1
+
   return tokens
 
 if __name__ == '__main__':
