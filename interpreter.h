@@ -32,7 +32,7 @@ void interpreter(char **tokens, size_t tokens_length) {
         
       }
       
-      char *result = postfix_evaluator(expression, j);
+      char *result = postfix_evaluator(data, expression, j);
       
       Lang_obj *lang_obj = name_exists(data, tokens[name]);
       
@@ -65,7 +65,7 @@ void interpreter(char **tokens, size_t tokens_length) {
         
       }
       
-      char *result = postfix_evaluator(expression, j);
+      char *result = postfix_evaluator(data, expression, j);
       
       for(size_t i = 0; i < j; ++i)
         free(expression[i]);
@@ -87,7 +87,7 @@ void interpreter(char **tokens, size_t tokens_length) {
         strcpy(expression[j++], tokens[i]);
       }
       
-      char *result = postfix_evaluator(expression, j);
+      char *result = postfix_evaluator(data, expression, j);
       
       if (!is_true(result)) {
         int gauge = 0;
@@ -123,7 +123,7 @@ void interpreter(char **tokens, size_t tokens_length) {
         strcpy(expression[j++], tokens[i]);
       }
       
-      char *result = postfix_evaluator(expression, j);
+      char *result = postfix_evaluator(data, expression, j);
       
       if (!is_true(result)) {
         int gauge = 0;
@@ -182,13 +182,6 @@ void interpreter(char **tokens, size_t tokens_length) {
       }
       
     }
-  }
-  
-  /* Prints all program variables. */
-  Lang_obj *lang_obj = pop__Data(data);
-  while (lang_obj != NULL) {
-    printf("%s: %s\n", lang_obj->name, lang_obj->value);
-    lang_obj = pop__Data(data);
   }
 }
 

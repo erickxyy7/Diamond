@@ -2,32 +2,7 @@
 #define POSTFIX_H 1
 
 #include "token_checking.h"
-
-size_t total_digits(int n) {
-  if (n < 0) {
-    if (n > -10) return 2;
-    if (n > -100) return 3;
-    if (n > -1000) return 4;
-    if (n > -10000) return 5;
-    if (n > -100000) return 6;
-    if (n > -1000000) return 7;
-    if (n > -10000000) return 8;
-    if (n > -100000000) return 9;
-    if (n > -1000000000) return 10;
-    if (n > -10000000000) return 11;
-  }
-  
-  if (n < 10) return 1;
-  if (n < 100) return 2;
-  if (n < 1000) return 3;
-  if (n < 10000) return 4;
-  if (n < 100000) return 5;
-  if (n < 1000000) return 6;
-  if (n < 10000000) return 7;
-  if (n < 100000000) return 8;
-  if (n < 1000000000) return 9;
-  if (n < 10000000000) return 10;
-}
+#include "identifier_to_literal_value.h"
 
 typedef struct Operand {
   char *value;
@@ -52,10 +27,12 @@ Operand *pop__Operands(Operands *operands) {
   return operand;
 }
 
-char *postfix_evaluator(char **expression, size_t expression_length) {
+char *postfix_evaluator(Data *data, char **expression, size_t expression_length) {
   
   Operands *operands = malloc(sizeof *operands);
   operands->top = NULL;
+  
+  identifier_to_literal_value(data, expression, expression_length);
   
   for(size_t i = 0; i < expression_length; ++i) {
     if (!strcmp(expression[i], "+") ||
