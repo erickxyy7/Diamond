@@ -4,6 +4,58 @@ Quick and simple Regex tokenizer. Useful for development.
 
 import re
 
+from infix_to_postfix import infix_to_postfix
+
+def tokens_infix_to_postfix(tokens):
+  
+  new_tokens = []
+  i = 0
+  while i < len(tokens):
+    
+    if tokens[i] == '=':
+      new_tokens.append(tokens[i])
+      
+      expression = []
+      i += 1
+      while tokens[i] != ';':
+        expression.append(tokens[i])
+        i += 1
+      
+      new_tokens += infix_to_postfix(expression) + [';']
+      i += 1
+      continue
+    
+    if tokens[i] == 'if':
+      new_tokens.append(tokens[i])
+      
+      expression = []
+      i += 1
+      while tokens[i] != ';':
+        expression.append(tokens[i])
+        i += 1
+      
+      new_tokens += infix_to_postfix(expression) + [';']
+      i += 1
+      continue
+    
+    if tokens[i] == 'while':
+      new_tokens.append(tokens[i])
+      
+      expression = []
+      i += 1
+      while tokens[i] != ';':
+        expression.append(tokens[i])
+        i += 1
+      
+      new_tokens += infix_to_postfix(expression) + [';']
+      i += 1
+      continue
+    
+    new_tokens.append(tokens[i])
+    i += 1
+  
+  return new_tokens
+
 def double_end_of_command_remotion(tokens):
   new_tokens = []
   for token in tokens:
@@ -38,6 +90,7 @@ def tokenizer(program):
     tokens.append(';')
 
   tokens = double_end_of_command_remotion(tokens)
+  tokens = tokens_infix_to_postfix(tokens)
 
   return tokens
 
