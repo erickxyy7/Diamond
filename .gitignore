@@ -227,3 +227,4 @@ cython_debug/
 .tokens.h
 tests.c
 tests.lang
+p.lang
