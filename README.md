@@ -4,6 +4,9 @@ An easy and simple programming language.
 ## Goal
 Diamond's goal is to be faster, easier and simpler than Python and Ruby.
 
+## Plans
+My plan is to implement the object-oriented paradigm later this year.
+
 ## Learn more
 You can learn more about Diamond programming language in the `docs` directory in this repository.
 
