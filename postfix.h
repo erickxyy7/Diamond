@@ -82,6 +82,14 @@ char *postfix_evaluator(Data *data, char **expression, size_t expression_length)
             push__Operands(operands, "1");
           else
             push__Operands(operands, "0");
+        } else if (!strcmp(expression[i], "!=")) {
+          /**
+           * Tests if one string is equal to another.
+           */
+          if (strcmp(first_operand->value, second_operand->value))
+            push__Operands(operands, "1");
+          else
+            push__Operands(operands, "0");
         }
       }
       
