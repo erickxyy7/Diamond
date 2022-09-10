@@ -1,6 +1,10 @@
 # Diamond
 An easy and simple programming language.
 
+## How to execute a Diamond program
+* Clone this repository
+* Run: `python3 diamond.py program_name.lang && ./a.out`
+
 ## Goal
 Diamond's goal is to be faster, easier and simpler than Python and Ruby.
 
