@@ -4,6 +4,15 @@ Quick and simple Regex tokenizer. Useful for development.
 
 import re
 
+def double_end_of_command_remotion(tokens):
+  new_tokens = []
+  for token in tokens:
+    new_tokens.append(token)
+    if len(new_tokens) > 2:
+      if new_tokens[-1] == ';' and new_tokens[-2] == ';':
+        del new_tokens[-1]
+  return new_tokens
+
 def tokenizer(program):
   regex = r"[a-zA-Z_][a-zA-Z0-9_]*|[0-9.]{1,65535}|[;]|={2,2}|!=|=|<=|<|>=|>|[*+-\/]|\n|'.*?'|\".*?\""
 
@@ -27,6 +36,8 @@ def tokenizer(program):
 
   if tokens[-1] != ';':
     tokens.append(';')
+
+  tokens = double_end_of_command_remotion(tokens)
 
   return tokens
 
