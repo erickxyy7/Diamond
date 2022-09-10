@@ -3,29 +3,7 @@
 
 #include "token_checking.h"
 #include "identifier_to_literal_value.h"
-
-typedef struct Operand {
-  char *value;
-  struct Operand *previous_operand;
-} Operand;
-
-typedef struct Operands {
-  Operand *top;
-} Operands;
-
-void push__Operands(Operands *operands, char *value) {
-  Operand *operand = malloc(sizeof *operand);
-  operand->value = malloc(sizeof operand->value * strlen(value) + 1);
-  strcpy(operand->value, value);
-  operand->previous_operand = operands->top;
-  operands->top = operand;
-}
-
-Operand *pop__Operands(Operands *operands) {
-  Operand *operand = operands->top;
-  operands->top = operands->top->previous_operand;
-  return operand;
-}
+#include "operands.h"
 
 char *postfix_evaluator(Data *data, char **expression, size_t expression_length) {
   
@@ -38,7 +16,8 @@ char *postfix_evaluator(Data *data, char **expression, size_t expression_length)
     if (!strcmp(expression[i], "+") ||
         !strcmp(expression[i], "-") ||
         !strcmp(expression[i], "*") ||
-        !strcmp(expression[i], "/")) {
+        !strcmp(expression[i], "/") ||
+        !strcmp(expression[i], "==")) {
       Operand *second_operand = pop__Operands(operands);
       Operand *first_operand = pop__Operands(operands);
       
@@ -52,6 +31,8 @@ char *postfix_evaluator(Data *data, char **expression, size_t expression_length)
           numeric_result = atof(first_operand->value) * atof(second_operand->value);
         else if (!strcmp(expression[i], "/"))
           numeric_result = atof(first_operand->value) / atof(second_operand->value);
+        else if (!strcmp(expression[i], "=="))
+          numeric_result = 1;
         
         char *result = malloc(sizeof *result * total_digits(numeric_result) + 8);
         sprintf(result, "%.6lf", numeric_result);
