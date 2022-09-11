@@ -66,7 +66,7 @@ def double_end_of_command_remotion(tokens):
   return new_tokens
 
 def tokenizer(program):
-  regex = r"[a-zA-Z_][a-zA-Z0-9_]*|[0-9.]{1,65535}|[;]|={2,2}|!=|=|<=|<|>=|>|[*+-\/]|\(|\)|\n|'.*?'|\".*?\""
+  regex = r"<-|[a-zA-Z_][a-zA-Z0-9_]*|[0-9.]{1,65535}|[;]|={2,2}|!=|=|<=|<|>=|>|[*+-\/]|\(|\)|\n|'.*?'|\".*?\""
 
   matches = re.finditer(regex, program, re.MULTILINE)
 

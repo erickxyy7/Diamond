@@ -24,12 +24,31 @@ char *postfix_evaluator(Data *data, char **expression, size_t expression_length)
         !strcmp(expression[i], ">")   ||
         !strcmp(expression[i], ">=")  ||
         !strcmp(expression[i], "or")  ||
-        !strcmp(expression[i], "and")) {
+        !strcmp(expression[i], "and") ||
+        !strcmp(expression[i], "<-")) {
       
       Operand *second_operand = pop__Operands(operands);
       Operand *first_operand = pop__Operands(operands);
       
-      if (is_number(first_operand->value) && is_number(second_operand->value)) {
+      if ( is_string(first_operand->value) &&
+           is_number(second_operand->value) &&
+           !strcmp(expression[i], "<-")
+         ) {
+        /**
+         * Executes the logic that is needed to be executed in a code like:
+         * first_letter = 'aeiou' <- 0
+         * 
+         * That is: finds a char in a string by it's index.
+         */
+        int index = atoi(second_operand->value);
+        char *result = malloc(sizeof (char) * 4);
+        result[0] = '\'';
+        result[1] = first_operand->value[index + 1];
+        result[2] = '\'';
+        result[3] = '\0';
+        push__Operands(operands, result);
+        free(result);
+      } else if (is_number(first_operand->value) && is_number(second_operand->value)) {
         double numeric_result;
         if (!strcmp(expression[i], "+"))
           numeric_result = atof(first_operand->value) + atof(second_operand->value);

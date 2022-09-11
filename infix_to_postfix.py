@@ -1,6 +1,21 @@
-Operators = set(['or', 'and', '==', '!=', '<', '<=', '>', '>=', '+', '-', '*', '/', '(', ')'])
+Operators = set(['or', 'and', '==', '!=', '<', '<=', '>', '>=', '<-', '+', '-', '*', '/', '(', ')'])
 
-Priority = {'or':1, 'and':2, '==':3, '!=':3, '<':4, '<=':4, '>':4, '>=':4, '+':5, '-':5, '*':6, '/':6}
+Priority = {'or': 1,
+            'and': 2,
+            
+            '==': 3,
+            '!=': 3,
+            '<': 4,
+            '<=': 4,
+            '>': 4,
+            '>=': 4,
+            
+            '+': 5,
+            '-': 5,
+            '*': 6,
+            '/': 6,
+            
+            '<-': 7}
 
 def infix_to_postfix(expression):
 
@@ -30,3 +45,6 @@ def infix_to_postfix(expression):
         output.append(stack.pop())
 
     return output
+
+if __name__ == '__main__':
+  print(infix_to_postfix(["'oi'", '0', '<-']))
