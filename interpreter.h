@@ -9,6 +9,8 @@
 #include "lang_obj.h"
 #include "boolean.h"
 
+#include "output/print_string_to_standard_output.h"
+
 void interpreter(char **tokens, size_t tokens_length) {
   
   Data *data = malloc(sizeof *data);
@@ -71,7 +73,10 @@ void interpreter(char **tokens, size_t tokens_length) {
         free(expression[i]);
       free(expression);
       
-      puts(result);
+      if (is_number(result))
+        puts(result);
+      else if (is_string(result))
+        print_string_to_standard_output(result);
       
       free(result);
     }
