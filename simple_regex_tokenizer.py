@@ -51,6 +51,19 @@ def tokens_infix_to_postfix(tokens):
       i += 1
       continue
     
+    if tokens[i] == 'puts':
+      new_tokens.append(tokens[i])
+      
+      expression = []
+      i += 1
+      while tokens[i] != ';':
+        expression.append(tokens[i])
+        i += 1
+      
+      new_tokens += infix_to_postfix(expression) + [';']
+      i += 1
+      continue
+    
     new_tokens.append(tokens[i])
     i += 1
   
