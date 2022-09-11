@@ -13,17 +13,17 @@ char *postfix_evaluator(Data *data, char **expression, size_t expression_length)
   identifier_to_literal_value(data, expression, expression_length);
   
   for(size_t i = 0; i < expression_length; ++i) {
-    if (!strcmp(expression[i], "+")  ||
-        !strcmp(expression[i], "-")  ||
-        !strcmp(expression[i], "*")  ||
-        !strcmp(expression[i], "/")  ||
-        !strcmp(expression[i], "==") ||
-        !strcmp(expression[i], "!=") ||
-        !strcmp(expression[i], "<")  ||
-        !strcmp(expression[i], "<=") ||
-        !strcmp(expression[i], ">")  ||
-        !strcmp(expression[i], ">=") ||
-        !strcmp(expression[i], "or") ||
+    if (!strcmp(expression[i], "+")   ||
+        !strcmp(expression[i], "-")   ||
+        !strcmp(expression[i], "*")   ||
+        !strcmp(expression[i], "/")   ||
+        !strcmp(expression[i], "==")  ||
+        !strcmp(expression[i], "!=")  ||
+        !strcmp(expression[i], "<")   ||
+        !strcmp(expression[i], "<=")  ||
+        !strcmp(expression[i], ">")   ||
+        !strcmp(expression[i], ">=")  ||
+        !strcmp(expression[i], "or")  ||
         !strcmp(expression[i], "and")) {
       
       Operand *second_operand = pop__Operands(operands);
