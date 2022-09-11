@@ -12,4 +12,4 @@ void print_string_to_standard_output(char *str) {
   putchar('\n');
 }
 
-#endif
+#endif /* print_string_to_standard_output.h */
