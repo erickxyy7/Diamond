@@ -1,5 +1,5 @@
 # Diamond
-An easy and simple programming language.
+An easy and simple programming language. Help me build it by going to the [Diamond's website](https://diamondlang.pythonanywhere.com/) then I can raise funds to continue Diamond's development.
 
 ## How to execute a Diamond program
 * Clone this repository
