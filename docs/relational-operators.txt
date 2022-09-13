@@ -1,0 +1,7 @@
+The relational operators are:
+==
+!=
+<
+<=
+>
+>=
