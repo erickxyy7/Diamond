@@ -10,6 +10,7 @@
 #include "boolean.h"
 
 #include "output/print_string_to_standard_output.h"
+#include "output/print_number_to_standard_output.h"
 
 void interpreter(char **tokens, size_t tokens_length) {
   
@@ -74,7 +75,7 @@ void interpreter(char **tokens, size_t tokens_length) {
       free(expression);
       
       if (is_number(result))
-        puts(result);
+        print_number_to_standard_output(result);
       else if (is_string(result))
         print_string_to_standard_output(result);
       
