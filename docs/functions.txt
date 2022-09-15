@@ -1,0 +1,19 @@
+Defining a function:
+`
+fn function_name ( params... )
+end
+`
+
+Calling a function:
+`
+function_name(x, y)
+`
+
+Example:
+```
+fn sum (x, y)
+  return x + y
+end
+
+result = sum(4, 5)
+```
