@@ -1,6 +1,7 @@
 Defining a function:
 `
 fn function_name ( params... )
+  ...
 end
 `
 
