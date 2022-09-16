@@ -1,0 +1,4 @@
++   works with: number, string
+-   works with: number
+*   works with: number, string
+/   works with: number
