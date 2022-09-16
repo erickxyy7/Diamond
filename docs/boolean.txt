@@ -1,0 +1,5 @@
+The next tokens are false:
+"0"
+"''" or '""' (empty string)
+
+The rest is true.
