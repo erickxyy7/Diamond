@@ -12,7 +12,7 @@
 #include "output/print_string_to_standard_output.h"
 #include "output/print_number_to_standard_output.h"
 
-void interpreter(char **tokens, size_t tokens_length) {
+void interpreter() {
 
   Data *data = malloc(sizeof *data);
   initialize__Data(data);
