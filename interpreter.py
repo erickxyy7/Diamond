@@ -84,11 +84,6 @@ def interpreter(tokens):
 
         i += 1
 
-    i = 0
-    while i < len(data):
-        print('%s: %s\n' % (data[i].name, data[i].value))
-        i += 1
-
 
 
 '''
