@@ -35,4 +35,15 @@ def tokenizer(source_code):
             tokens[i] = ';'
         i += 1
 
-    return tokens
+    '''
+    Removes repeated ';'.
+    '''
+    new_tokens = []
+    for token in tokens:
+        if token == ';':
+            if new_tokens[-1] != ';':
+                new_tokens.append(token)
+        else:
+            new_tokens.append(token)
+
+    return new_tokens

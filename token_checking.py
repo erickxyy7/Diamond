@@ -12,6 +12,8 @@ def is_number(token):
 Checks if a token is a string.
 '''
 def is_string(token):
+    if not isinstance(token, str):
+        return False
     if len(token) < 2:
         return False
     if token[0] == '"' and token[-1] == '"':
