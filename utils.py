@@ -14,3 +14,21 @@ def find_end_equivalent(tokens, block_opening):
             if gauge == 0:
                 return i
             gauge -= 1
+
+'''
+Finds the token equivalent of the `end` in `end_pos`.
+'''
+def find_token_of_end(tokens, end_pos):
+    i = end_pos - 1
+    gauge = 0
+    while True:
+
+        if tokens[i] == 'end':
+            gauge += 1
+
+        if tokens[i] == 'if' or tokens[i] == 'while' or tokens[i] == 'fn':
+            if gauge == 0:
+                return i
+            gauge -= 1
+
+        i -= 1

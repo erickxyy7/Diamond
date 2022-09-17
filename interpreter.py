@@ -1,5 +1,6 @@
 from postfix_evaluator import postfix_evaluator
 from utils import find_end_equivalent
+from utils import find_token_of_end
 import token_checking
 
 class Lang_obj:
@@ -63,6 +64,13 @@ def interpreter(tokens):
             i = end_pos + 2
             continue
 
+        if tokens[i] == 'end':
+            token_of_end = find_token_of_end(tokens, i)
+
+            if tokens[token_of_end] == 'while':
+                i = token_of_end
+                continue
+
         i += 1
 
     i = 0
@@ -77,6 +85,6 @@ This is for development and tests purposes.
 '''
 if __name__ == '__main__':
 
-    some_tokens = ['if', '10', '10', '-', ';', 'foo', '=', '9', ';', 'end', ';']
+    some_tokens = 'while 1 ; a = 10 ; end ;'.split()
 
     interpreter(some_tokens)
