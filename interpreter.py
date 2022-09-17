@@ -1,4 +1,5 @@
 from postfix_evaluator import postfix_evaluator
+from utils import find_end_equivalent
 import token_checking
 
 class Lang_obj:
@@ -44,7 +45,7 @@ def interpreter(tokens):
                 lang_obj = Lang_obj(name, result)
                 data.append(lang_obj)
 
-        if tokens[i] == 'if':
+        if tokens[i] == 'if' or tokens[i] == 'while':
 
             expression = []
             i += 1
@@ -55,9 +56,12 @@ def interpreter(tokens):
             result = postfix_evaluator(expression)
 
             if token_checking.boolean_value(result) == True:
+                i += 1
                 continue
 
-            print('Falso.')
+            end_pos = find_end_equivalent(tokens, i)
+            i = end_pos + 2
+            continue
 
         i += 1
 
