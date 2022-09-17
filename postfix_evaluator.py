@@ -66,7 +66,7 @@ def postfix_evaluator(data, expression):
                 if element == '*':
                     result = first_operand[1:-1] * int(second_operand)
                 elif element == '<-':
-                    result = first_operand[1:-1][int(float(second_operand))]
+                    result = "'" + first_operand[1:-1][int(float(second_operand))] + "'"
 
             elif token_checking.is_string(second_operand) and token_checking.is_number(first_operand):
                 if element == '*':
