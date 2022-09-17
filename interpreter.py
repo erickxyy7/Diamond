@@ -25,7 +25,7 @@ def interpreter(tokens):
                 expression.append(tokens[i])
                 i += 1
 
-            result = postfix_evaluator(expression)
+            result = postfix_evaluator(data, expression)
 
             '''
             If a variable with the name `name` already exists, updates it, if not exists,
@@ -54,7 +54,7 @@ def interpreter(tokens):
                 expression.append(tokens[i])
                 i += 1
 
-            result = postfix_evaluator(expression)
+            result = postfix_evaluator(data, expression)
 
             if token_checking.boolean_value(result) == True:
                 i += 1
@@ -78,7 +78,7 @@ def interpreter(tokens):
                 expression.append(tokens[i])
                 i += 1
 
-            result = postfix_evaluator(expression)
+            result = postfix_evaluator(data, expression)
 
             print(result)
 
@@ -96,6 +96,6 @@ This is for development and tests purposes.
 '''
 if __name__ == '__main__':
 
-    some_tokens = 'puts 9 ; puts 10 5 + ;'.split()
+    some_tokens = 'a = 9 ; puts a a + ;'.split()
 
     interpreter(some_tokens)

@@ -1,9 +1,27 @@
 import token_checking
 
+def replace_identifiers_with_values(data, expression):
+    i = 0
+    l = len(expression)
+    while i < l:
+
+        if expression[i].isidentifier():
+            j = -1
+            len_data = len(data)
+            while j >= (-1 * len_data):
+                if data[j].name == expression[i]:
+                    expression[i] = data[j].value
+                j -= 1
+
+        i += 1
+    return expression
+
 '''
 `expression` is a list of tokens.
 '''
-def postfix_evaluator(expression):
+def postfix_evaluator(data, expression):
+
+    expression = replace_identifiers_with_values(data, expression)
 
     stack = []
 
