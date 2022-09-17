@@ -1,6 +1,6 @@
 Program:
 ```
-puts 'hello world'[0]
+puts 'hello world' <- 0
 ```
 
 Output: h
