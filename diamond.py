@@ -3,6 +3,7 @@ Starting point of executing an arbitrary program.
 '''
 
 from tokenizer import tokenizer
+from infix_to_postfix import infix_to_postfix
 from interpreter import interpreter
 
 if __name__ == '__main__':
@@ -17,4 +18,5 @@ if __name__ == '__main__':
         source_code = program.read()
 
     tokens = tokenizer(source_code)
+    tokens = infix_to_postfix(tokens)
     interpreter(tokens)
