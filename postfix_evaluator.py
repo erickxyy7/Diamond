@@ -27,7 +27,8 @@ def postfix_evaluator(data, expression):
 
     for element in expression:
         if element in ['+', '-', '*', '/',
-                       '==', '!=', '<', '<=', '>', '>=']:
+                       '==', '!=', '<', '<=', '>', '>=',
+                       '<-']:
             second_operand = stack.pop()
             first_operand = stack.pop()
 
@@ -64,6 +65,8 @@ def postfix_evaluator(data, expression):
             elif token_checking.is_string(first_operand) and token_checking.is_number(second_operand):
                 if element == '*':
                     result = first_operand[1:-1] * int(second_operand)
+                elif element == '<-':
+                    result = first_operand[1:-1][int(float(second_operand))]
 
             elif token_checking.is_string(second_operand) and token_checking.is_number(first_operand):
                 if element == '*':
