@@ -96,6 +96,6 @@ This is for development and tests purposes.
 '''
 if __name__ == '__main__':
 
-    some_tokens = 'a = 9 ; puts a a + ;'.split()
+    some_tokens = ['if', '9', '82', '>=', ';', 'puts', '"sim"', ';', 'end', ';']
 
     interpreter(some_tokens)
