@@ -71,6 +71,17 @@ def interpreter(tokens):
                 i = token_of_end
                 continue
 
+        if tokens[i] == 'puts':
+            expression = []
+            i += 1
+            while tokens[i] != ';':
+                expression.append(tokens[i])
+                i += 1
+
+            result = postfix_evaluator(expression)
+
+            print(result)
+
         i += 1
 
     i = 0
@@ -85,6 +96,6 @@ This is for development and tests purposes.
 '''
 if __name__ == '__main__':
 
-    some_tokens = 'while 1 ; a = 10 ; end ;'.split()
+    some_tokens = 'puts 9 ; puts 10 5 + ;'.split()
 
     interpreter(some_tokens)
