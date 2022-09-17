@@ -25,12 +25,13 @@ def tokenizer(source_code):
         tokens.append(';')
 
     '''
-    Converts the `do` keyword to `;`.
+    Converts the `do` keyword to `;`;
+    Converts the `then` keyword to ';'.
     '''
     i = 0
     tokens_length = len(tokens)
     while i < tokens_length:
-        if tokens[i] == 'do':
+        if tokens[i] == 'do' or tokens[i] == 'then':
             tokens[i] = ';'
         i += 1
 
