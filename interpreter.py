@@ -71,6 +71,18 @@ def interpreter(tokens):
                 i = token_of_end
                 continue
 
+        if tokens[i] == 'break':
+            '''
+            Finds the `while` of this `break` and skips to the `end` of this `while`.
+            '''
+            i -= 1
+            while tokens[i] != 'while':
+                i -= 1
+
+            skip_to = find_end_equivalent(tokens, i) + 2
+            i = skip_to
+            continue
+
         if tokens[i] == 'puts':
             expression = []
             i += 1
