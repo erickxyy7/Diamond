@@ -19,3 +19,5 @@ Inline:
 `
 while expression do ... end
 `
+
+while loops also support `break` and `continue` keywords.
