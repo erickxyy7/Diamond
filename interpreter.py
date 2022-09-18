@@ -83,6 +83,15 @@ def interpreter(tokens):
             i = skip_to
             continue
 
+        if tokens[i] == 'continue':
+            '''
+            Finds the `while` of this `continue` and continues from it.
+            '''
+            i -= 1
+            while tokens[i] != 'while':
+                i -= 1
+            continue
+
         if tokens[i] == 'puts':
             expression = []
             i += 1

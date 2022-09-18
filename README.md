@@ -5,7 +5,6 @@ An easy and simple programming language.
 Here's Diamond official website: https://diamondlang.pythonanywhere.com
 
 ## Future features
-* `continue` keyword.
 * functions.
 * Object Orientation.
 * More mature strings (escape characters, string length, etc.).
