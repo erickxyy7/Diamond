@@ -1,0 +1,8 @@
+With the index operator, you can get the value in any index of any string.
+
+Example:
+variable = 'hello, world!'
+some_value = variable <- 1
+puts some_value
+
+Output: e
