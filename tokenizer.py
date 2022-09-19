@@ -38,12 +38,15 @@ def tokenizer(source_code):
     '''
     Removes repeated ';'.
     '''
-    new_tokens = []
+    new_tokens = [';'] # this ';' is required if the list of tokens starts with ';'.
     for token in tokens:
         if token == ';':
             if new_tokens[-1] != ';':
                 new_tokens.append(token)
         else:
             new_tokens.append(token)
+
+    if new_tokens[0] == ';':
+        del new_tokens[0]
 
     return new_tokens
