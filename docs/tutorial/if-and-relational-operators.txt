@@ -1,0 +1,25 @@
+The relational operators are:
+==
+!=
+<
+<=
+>
+>=
+
+They compare two values.
+
+Example:
+x = 3 == 3
+puts x
+
+Output: True
+
+The `if` keyword changes the program flow based on the expression on it. If the
+expression is false, the program doesn't executes the `if`'s code block,
+if the expression is true, the program executes the `if`'s code block.
+
+Example:
+age = 19
+if age < 18
+    puts "You can't drink."
+end
