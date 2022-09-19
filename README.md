@@ -4,6 +4,9 @@ An easy and simple programming language.
 ## Official website
 Here's Diamond official website: https://diamondlang.pythonanywhere.com
 
+## Tutorial
+There's a Diamond tutorial [here](https://github.com/erickxyy7/Diamond/tree/main/docs/tutorial).
+
 ## Future features
 * logical operators (`and`, `or`).
 * functions.
