@@ -1,0 +1,8 @@
+The `while` keyword repeatedly executes a block of code and stops the execution when the `while`'s expression becomes false.
+
+Example (printing from 0 to 3 in the screen):
+n = 0
+while n < 3
+  puts n
+  n = n + 1
+end
