@@ -3,9 +3,10 @@ The primitive data types are: number and string.
 number: a floating point or integer number. Diamond have only one data type that
 handles the floating point and integer numbers at once.
 
-string: an immutable sequence of characters.
+string: an immutable sequence of characters. Strings are enclosed in quotes ("") or apostrophes ('').
 
 Example:
 mystring = 'hello, world!'
 mynumber = 7
 myothernumber = 3.14
+myotherstring = 'test'
