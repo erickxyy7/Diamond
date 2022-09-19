@@ -1,0 +1,13 @@
+You can give a variable a value by doing:
+var_name = 8
+
+The arithmetic operators are:
++   addition
+-   subtraction
+*   multiplication
+/   division
+
+You can use them normally in any arithmetic and boolean expression.
+
+Example:
+x = pi * (9 - 4)
