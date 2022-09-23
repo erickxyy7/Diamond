@@ -1,0 +1,3 @@
+Identifier names can contain numbers (0-9), uppercase letters (A-Z), lowercase letters (a-z), and underscore (_);
+The name should always start with a non-numeric character;
+An identifier name should not contain numeric characters only.
