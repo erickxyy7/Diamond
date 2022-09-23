@@ -1,3 +1,0 @@
-Somethings to consider in order to speed up Diamond performance.
-
-* Convert all infix expressions to postfix expressions before tokens execution starts.

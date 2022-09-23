@@ -1,2 +1,0 @@
-An empty string (i.e., '' or "") is false;
-Number 0 is false.

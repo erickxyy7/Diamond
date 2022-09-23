@@ -1,5 +1,2 @@
-The next tokens are false:
-"0"
-"''" or '""' (empty string)
-
-The rest is true.
+An empty string (i.e., '' or "") is false;
+Number 0 is false.
